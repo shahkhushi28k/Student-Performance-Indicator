@@ -23,7 +23,10 @@ class DataTransformation:
         self.data_transformation_config=DataTransformationConfig()
 
     def get_data_transformer_object(self):
-       
+        '''
+        This function si responsible for data trnasformation
+        
+        '''
         try:
             numerical_columns = ["writing_score", "reading_score"]
             categorical_columns = [
@@ -92,7 +95,7 @@ class DataTransformation:
             target_feature_test_df=test_df[target_column_name]
 
             logging.info(
-                "Applying preprocessing object on training dataframe and testing dataframe."
+                f"Applying preprocessing object on training dataframe and testing dataframe."
             )
 
             input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
@@ -103,7 +106,7 @@ class DataTransformation:
             ]
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
 
-            logging.info("Saved preprocessing object.")
+            logging.info(f"Saved preprocessing object.")
 
             save_object(
 
